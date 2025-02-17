@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
-    Program, Faculty, CourseCategory, Offering, Course, CourseFaculty,
-    Student, CourseStudent, Quiz, Assignment, Exam, CourseOutline, Attendance,
+    Program, Faculty, CourseCategory, Offering, Course, CourseFolders,
+    Student, Quiz, Assignment, Exam, CourseOutline, Attendance,
     Lab, CourseMaterial, Assessment, Gradesheet
 )
 
@@ -35,22 +35,18 @@ class CourseSerializer(serializers.ModelSerializer):
         model = Course
         fields = '__all__'
 
-# CourseFaculty Serializer
-class CourseFacultySerializer(serializers.ModelSerializer):
+# Course Folder Serializer
+class CourseFoldersSerializer(serializers.ModelSerializer):
+    course_offering = OfferingSerializer()  # Nest the OfferingSerializer
+
     class Meta:
-        model = CourseFaculty
+        model = CourseFolders
         fields = '__all__'
 
 # Student Serializer
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = '__all__'
-
-# CourseStudent Serializer
-class CourseStudentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CourseStudent
         fields = '__all__'
 
 # Quiz Serializer
