@@ -1,0 +1,25 @@
+# Virtual environment
+env/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Django stuff
+db.sqlite3
+media/
+staticfiles/
+
+# React stuff
+fms-frontend/node_modules/
+fms-frontend/build/
+
+# Environment files
+*.env
+
+# Logs
+*.log
+
+# VS Code
+.vscode/

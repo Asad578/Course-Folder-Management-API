@@ -3,7 +3,7 @@ from .views import (
     ProgramListCreateView, ProgramDetailView, FacultyListCreateView, FacultyDetailView,
     CourseCategoryListCreateView, CourseCategoryDetailView, OfferingListCreateView, OfferingDetailView, OfferingsByProgramView,
     CourseListCreateView, CourseDetailView, CourseFoldersListCreateView, CourseFoldersDetailView, CoursesByProgramView,QuizFileUploadView, QuizFileDeleteView,
-    StudentListCreateView, StudentDetailView, CourseFoldersByOfferingView, CurrentOfferingsListView, ExamsByFolderView, LabFileUploadView, LabFileDeleteView,
+    StudentListCreateView, StudentDetailView, InstructorCoursesView, CourseFoldersByOfferingView, CurrentOfferingsListView, ExamsByFolderView, LabFileUploadView, LabFileDeleteView,
     QuizListCreateView, QuizDetailView, AssignmentListCreateView, AssignmentDetailView, AssignmentsByFolderView, AssessmentsByFolderView, AssignmentFileUploadView, AssignmentFileDeleteView,
     ExamListCreateView, ExamDetailView, CourseOutlineListCreateView, CourseOutlineDetailView, LabsByFolderView, CourseOutlineByFolderView,
     AttendanceListCreateView, AttendanceDeleteView, AttendanceDetailView, LabListCreateView, LabDetailView, QuizzesByFolderView, CourseOutlineUploadView, ExamFileUploadView,ExamFileDeleteView, 
@@ -25,7 +25,6 @@ urlpatterns = [
     path('course-categories/<int:pk>/', CourseCategoryDetailView.as_view(), name='course-category-detail'),
     path('program/<int:program_id>/course-categories/', CoursesByProgramView.as_view(), name='program-courses'),
 
-
     # Offering URLs
     path('offerings/', OfferingListCreateView.as_view(), name='offering-list-create'),
     path('offerings/<int:pk>/', OfferingDetailView.as_view(), name='offering-detail'),
@@ -36,12 +35,12 @@ urlpatterns = [
     path('offeringcourses/<int:pk>/', CourseDetailView.as_view(), name='off-courses-detail'),
     path('current-offerings/', CurrentOfferingsListView.as_view(), name='current-offerings'),
 
-
     # Course Folders URLs
     path('courses/', CourseFoldersListCreateView.as_view(), name='course-folder-list-create'),
     path('courses/<int:pk>/', CourseFoldersDetailView.as_view(), name='course-folder-detail'),
     path('offerings/<int:offering_id>/course-folders/', CourseFoldersByOfferingView.as_view(), name='offering-course-folders'),
     path('students/<int:student_id>/enrolled-courses/', StudentEnrolledCoursesView.as_view(), name='student-enrolled-courses'),
+    path('courses/instructor/<int:instructor_id>/', InstructorCoursesView.as_view(), name='instructor-courses'),
 
 
     # Student URLs

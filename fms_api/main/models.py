@@ -36,7 +36,6 @@ class Program(models.Model):
     manager = models.IntegerField(null=True, blank=True)
     instructor = models.IntegerField(null=True, blank=True)
 
-
 # Student Model
 class Student(models.Model):
     user_id = models.AutoField(primary_key=True)

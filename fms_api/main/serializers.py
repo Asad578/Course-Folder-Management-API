@@ -37,7 +37,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
 # Course Folder Serializer
 class CourseFoldersSerializer(serializers.ModelSerializer):
-    course_offering = OfferingSerializer()  # Nest the OfferingSerializer
+    course_offering = OfferingSerializer()
 
     class Meta:
         model = CourseFolders

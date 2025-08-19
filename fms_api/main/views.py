@@ -2,6 +2,7 @@ from rest_framework import generics
 from rest_framework.exceptions import NotFound
 from rest_framework.views import APIView
 from datetime import date
+from django.db.models import Q
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
@@ -134,6 +135,14 @@ class StudentEnrolledCoursesView(APIView):
             return Response(serializer.data)
         except Student.DoesNotExist:
             return Response({"detail": "Student not found"}, status=404)
+
+class InstructorCoursesView(APIView):
+    def get(self, request, instructor_id):
+        courses = CourseFolders.objects.filter(            
+            Q(course_instructor=instructor_id) | Q(lab_instructor=instructor_id)
+            )
+        serializer = CourseFoldersSerializer(courses, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class CourseFoldersListCreateView(generics.ListCreateAPIView):
     queryset = CourseFolders.objects.all()
