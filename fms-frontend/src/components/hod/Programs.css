@@ -1,0 +1,102 @@
+.pr-tile-list {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .pr-tile-item {
+    color: black;
+    background-color: #E7EDF2;
+    width: 80%;
+    height: 56px;
+    border: 2px solid #BDCEDB;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between; /* Ensure that the content (name + button) is spread out */
+    align-items: center; /* Center items vertically */
+    padding: 0 10px; /* Add padding to the left and right of the item */
+  }
+  
+  .pr-tile-clr {
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 18px;
+    flex-grow: 1; /* Allow the program name to take up remaining space */
+  }
+  
+.edit-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-icon {
+  font-size: 18px;
+  color: #13507F;
+}
+
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    overflow: hidden;
+  }
+
+  .modal input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  
+.modal-buttons .cancel-btn {
+  background-color: #ccc;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal-buttons .update-btn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal-buttons .update-btn:hover {
+  background-color: #13507F;
+  color: white;
+}
+
+  

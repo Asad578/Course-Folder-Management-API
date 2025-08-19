@@ -1,0 +1,94 @@
+.off-tile-list {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.off-tile-item {
+    color: black;
+    background-color: #E7EDF2;
+    width: 47%;
+    height: auto; /* Allow height to adjust based on content */
+    border: 2px solid #BDCEDB;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: left; /* Center content vertically */
+    justify-content: left; /* Center content horizontally */
+}
+
+.off-tile-clr {
+    color: black;
+    display: flex;
+    flex-direction: column; /* Stack h4 and p vertically */
+    align-items: left; /* Center content horizontally */
+    justify-content: left; /* Center content vertically */
+    padding: 10px;
+    width: 100%; /* Ensure it takes full width */
+    text-align: left; /* Center text */
+}
+
+.off-tile-clr h4 {
+    margin: 0; /* Remove default margin */
+    font-size: 16px; /* Larger font size for h4 */
+    font-weight: bold; /* Optional: Make h4 bold */
+}
+
+.off-tile-clr p {
+    margin: 0; /* Remove default margin */
+    font-size: 12px; /* Smaller font size for p */
+    color: #666; /* Optional: Lighten the text color for p */
+}
+
+.dropdown-item{
+  color: black;
+    background-color: #E7EDF2;
+    border: 2px solid #BDCEDB;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+    height: 35px;
+}
+
+.dropdown-item .dd-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.incompletes-table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #BDCEDB;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table-content {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .table-content th, .table-content td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .table-content th {
+    background-color: #E7EDF2;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .table-content tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-content tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  

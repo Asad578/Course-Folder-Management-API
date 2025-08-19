@@ -1,0 +1,155 @@
+body{
+    left: 0;
+    top: 0;
+    background-color: white;
+    color: black;
+}
+
+.pr-dashboard{
+    margin: 80px 240px;
+    padding: 5px 30px;
+    display: block;
+    position: relative;
+    max-width: 900px;
+}
+
+.heading{
+    display: flex;
+    height: 28px;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.heading-btn{
+    width: 78px;
+    height: 28px;
+    cursor: pointer;
+    border: 1.5px;
+    background-color: #13507F;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.content{
+    margin: 28px 0px;
+    padding: 2px 5px;
+}
+
+h2{
+    margin-top: 0px;
+    size: 30px;
+    color: black;
+}
+
+
+.of-tile-list {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .of-tile-item {
+    color: black;
+    background-color: #E7EDF2;
+    width: auto;
+    height: 56px;
+    border: 2px solid #BDCEDB;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between; /* Ensure that the content (name + button) is spread out */
+    align-items: center; /* Center items vertically */
+    padding: 0 10px; /* Add padding to the left and right of the item */
+  }
+  
+  .of-tile-clr {
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 18px;
+    flex-grow: 1; /* Allow the program name to take up remaining space */
+  }
+  
+  
+
+.course-table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #BDCEDB;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .course-table th, .course-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .course-table th {
+    background-color: #E7EDF2;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .course-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .course-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+ 
+.separator{
+    border: none;
+    border-top: 1px solid #BDCEDB; 
+    margin: 30px 0px;
+}
+
+
+.no-data img{
+    width: 100%;
+}
+
+
+.big-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+
+.modal.big-modal {
+  width: 800px; /* Increase the width */
+  height: 600px; /* Increase the height */
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add scrollbar to the table container */
+.big-modal-container {
+  max-height: 400px; /* Adjust based on your needs */
+  overflow-y: auto;
+}

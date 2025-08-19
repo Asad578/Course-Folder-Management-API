@@ -1,0 +1,170 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import InstructorSideBar from "./InstructorSideBar";
+import "./InstCourseOutline.css";
+
+export default function InstAssessmentContent() {
+  const { assessmentId, folder_name } = useParams();
+  const [assessment, setAssessment] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fileField, setFileField] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteFileField, setDeleteFileField] = useState("");
+
+  const fileTypes = ["question", "solution", "best", "average", "worst"];
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/assessments/${assessmentId}/`)
+      .then(response => response.json())
+      .then(data => {
+        setAssessment(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching assessment:", error);
+        setLoading(false);
+      });
+  }, [assessmentId]);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    if (file.type !== "application/pdf") {
+      setErrorMessage("Only PDF files are allowed.");
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      setErrorMessage("File size must be less than 20MB.");
+      return;
+    }
+    setErrorMessage("");
+    setSelectedFile(file);
+  };
+
+  const handleUpload = async () => {
+    if (!selectedFile || !fileField) {
+      setErrorMessage("Please select a valid file before uploading.");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("file_field", fileField);
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/assessments/${assessmentId}/upload/`, {
+        method: "PUT",
+        body: formData,
+      });
+      if (!response.ok) throw new Error("Failed to update file.");
+      const data = await response.json();
+      setAssessment(data);
+      setShowModal(false);
+      setSelectedFile(null);
+    } catch (error) {
+      console.error("Error updating file:", error);
+      setErrorMessage("Upload failed. Please try again.");
+    }
+  };
+
+  const confirmDelete = (fileType) => {
+    setDeleteFileField(fileType);
+    setShowDeleteModal(true);
+  };
+
+  const handleDelete = async () => {
+    if (!deleteFileField) return;
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/assessments/${assessmentId}/delete/`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ file_field: deleteFileField }),
+      });
+      if (!response.ok) throw new Error("Failed to delete file.");
+      const data = await response.json();
+      setAssessment(data);
+      setShowDeleteModal(false);
+    } catch (error) {
+      console.error("Error deleting file:", error);
+      alert("File deletion failed.");
+    }
+  };
+
+  if (loading) return <div>Loading assessment details...</div>;
+
+  return (
+    <>
+      <InstructorSideBar />
+      <div className="dashboard">
+        <div className="main-heading">
+          <h1>{folder_name}</h1>
+        </div>
+        <hr className="separator" />
+        <div className="heading">
+          <h2>Assessment {assessment.assessment_name}</h2>
+        </div>
+        <div className="content">
+          {fileTypes.map(type => (
+            <div key={type} className="file-section">
+              <h3>{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
+              {assessment[type] ? (
+                <div className="ot-tile-item">
+                  <div className="ot-tile-clr">
+                    <a href={assessment[type]} target="_blank" rel="noopener noreferrer">
+                      {assessment[type].split("/").pop()}
+                    </a>
+                  </div>
+                  <div className="edit-delete-btn">
+                    <button className="delete-btn" onClick={() => confirmDelete(type)}>
+                      <FiTrash2 className="delete-icon" />
+                    </button>
+                    <button className="edit-btn" onClick={() => {
+                      setFileField(type);
+                      setShowModal(true);
+                    }}>
+                      <FiEdit className="edit-icon" />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button className="upload-btn" onClick={() => {
+                  setFileField(type);
+                  setShowModal(true);
+                }}>
+                  Upload {type}
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Upload {fileField}</h3>
+            <input type="file" accept=".pdf" onChange={handleFileChange} />
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <div className="modal-buttons">
+              <button className="cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+              <button className="upload-btn" onClick={handleUpload}>Upload</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showDeleteModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Are you sure you want to delete this file?</h3>
+            <p>This action cannot be undone.</p>
+            <div className="modal-buttons">
+              <button className="cancel-btn" onClick={() => setShowDeleteModal(false)}>Cancel</button>
+              <button className="delete-btn" onClick={handleDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

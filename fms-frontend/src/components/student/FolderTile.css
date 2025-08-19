@@ -1,0 +1,24 @@
+.ff-tile-list{
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+.ff-tile-item{
+    color: black;
+    background-color: #E7EDF2;
+    width: 394px;
+    height: 56px;
+    border: 2px solid #BDCEDB;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.ff-tile-clr{
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 18px;
+}

@@ -1,0 +1,51 @@
+.course-table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #BDCEDB;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.course-table th, .course-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.course-table th {
+  background-color: #E7EDF2;
+  font-weight: bold;
+  text-align: center;
+}
+
+.course-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.course-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.edit-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-icon {
+  font-size: 18px;
+  color: #13507F;
+}
+
+
+  

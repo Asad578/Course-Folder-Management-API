@@ -1,0 +1,55 @@
+.course-list{
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+}
+.course-item{
+    width: 256px;
+    height: 300px;
+    border: 2px solid #E7EDF2;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.course-clr{
+    color: #E4A13A;
+    background-color: #08215C;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 100px;
+    justify-content: center;
+}
+.course-dtl{
+    padding: 5px;
+    margin: 0;
+}
+.course-dtl h4{
+    margin: 0px;
+}
+.course-dtl p{
+    margin: 5px 0px;
+    font-size: 11px;
+    color: #9A9B9F;
+}
+.progress-per{
+    font-size: 10px;
+    display: flex;
+    margin: 10px;
+    justify-content: flex-end;
+}
+.progress-bar{
+    border: 2px solid #E7EDF2;
+    height: 10px;
+    border-radius: 10px
+}
+.progress-bar-fill{
+    background-color: #13507F;
+    height: 10px;
+    border-radius: 10px;
+    width: 20%;
+}

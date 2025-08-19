@@ -1,0 +1,47 @@
+.of-tile-list {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.of-tile-item {
+  color: black;
+  background-color: #E7EDF2;
+  width: auto;
+  height: 56px;
+  border: 2px solid #BDCEDB;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* Ensure that the content (name + button) is spread out */
+  align-items: center; /* Center items vertically */
+  padding: 0 10px; /* Add padding to the left and right of the item */
+}
+
+.of-tile-clr {
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 18px;
+  flex-grow: 1; /* Allow the program name to take up remaining space */
+}
+
+
+.edit-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-icon {
+  font-size: 18px;
+  color: #13507F;
+}
+
